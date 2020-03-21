@@ -1,4 +1,5 @@
 import copy
+from queue import PriorityQueue
 from time import perf_counter_ns
 
 class Matriks:
@@ -142,6 +143,30 @@ class Matriks:
 		return ok
 
 	def bnb(self, vis, par, bangkit, ketemu):
+		dist = {}
+		setattr(Matriks, "__lt__", lambda self, other: self.bound()+dist[self] <= other.bound()+dist[self])
+		li = PriorityQueue()
+		li.put(self)
+		dist[self] = 0
+		while not li.empty():
+			expand = li.get()
+			for step in [['x',1],['x',-1],['y',1],['y',-1]]:
+				child = expand.move(step[0],step[1])
+				if child is not None:
+					if child not in vis:
+						par[child] = expand
+						dist[child] = dist[expand] + 1
+						bangkit += 1
+						li.put(child)
+						vis[child] = True
+					if child.sol():
+						ketemu = True
+			if ketemu:
+				break
+
+		return vis, par, bangkit, ketemu
+
+	def bnb1(self, vis, par, bangkit, ketemu):
 		solution = [-1,-1,-1]
 		q = []
 		expand = self
