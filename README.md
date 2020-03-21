@@ -8,6 +8,6 @@ Execute `[PYTHON_VERSION] main.py` from this folder inside the terminal. For exa
 
 `python3.7 main.py`
 
-The program will prompt you for the file name containing the initial configuration of the puzzle. You have to create a .txt file consisting this initial configuration in the same folder and insert this file's name inside the program.
+The program will prompt you for the file name containing the initial configuration of the puzzle. So before running the program, you have to create a .txt file consisting this initial configuration in the same folder and insert this file's name inside the program.
 
 
