@@ -100,14 +100,14 @@ class Matriks:
 	def solve(self):
 		if not self.valid():
 			print("Nilainya ganjil!.")
-			print("Oleh karena itu, puzzle ini tidak mungkin diselesaikan, maaf :(")
+			print("\nOleh karena itu, puzzle ini tidak mungkin diselesaikan, maaf :(")
 		else:
 			t_start = perf_counter_ns()
-			vis, par, bangkit, ketemu = self.bnb({self: True},{},1,False)
+			par, bangkit = self.bnb()
 			t_finish = perf_counter_ns()
 			waktu = (t_finish - t_start) / 1000
 			print("Nilainya genap!!!!.")
-			print("Yey, puzzle ini dapat diselesaikan, hore :D")
+			print("\nYey, puzzle ini dapat diselesaikan, hore :D")
 			print("Dengan menggunakan algoritma Branch n Bound, solusinya adalah sebagai berikut:")
 
 			solution = []
@@ -124,11 +124,13 @@ class Matriks:
 			solution.reverse()
 
 			idx = 0
+			print("---------------")
 			for state in solution:
-				print(f"Step {idx}:\n{state}\n----------")
+				print(f"Step {idx}:\n\n{state}\n---------------")
 				idx += 1
 
-			print(f"Waktu eksekusi algoritmanya adalah {waktu} mikro sekon")
+			print(f"Waktu eksekusi algoritmanya adalah: {waktu} mikro sekon")
+			print()
 			print(f"Banyak simpul yang dibangkitkan saat pencarian adalah {bangkit}")
 
 	def sol(self):
@@ -142,7 +144,11 @@ class Matriks:
 					ok = False
 		return ok
 
-	def bnb(self, vis, par, bangkit, ketemu):
+	def bnb(self):
+		vis = {self:True}
+		bangkit = 1
+		par = {}
+		ketemu = False
 		dist = {}
 		setattr(Matriks, "__lt__", lambda self, other: self.bound()+dist[self] <= other.bound()+dist[self])
 		li = PriorityQueue()
@@ -164,7 +170,7 @@ class Matriks:
 			if ketemu:
 				break
 
-		return vis, par, bangkit, ketemu
+		return par, bangkit
 
 	def bnb1(self, vis, par, bangkit, ketemu):
 		solution = [-1,-1,-1]
