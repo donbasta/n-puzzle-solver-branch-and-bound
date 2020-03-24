@@ -6,10 +6,10 @@ N-puzzle is a popular game. This program tries to solve this puzzle given its st
 Detailed report can be seen here: [Laporan Tucil](https://docs.google.com/document/d/1hPSwJk3eXp89Q7qDp9cocr--L_ib6IU-cUslqW8HaG8/edit?usp=sharing)
 
 ## Running the Program
-Execute `[PYTHON_VERSION] main.py` from this folder inside the terminal. For example:
+Execute `[PYTHON_VERSION] main.py` from src folder inside the terminal. For example:
 
 `python3.7 main.py`
 
-The program will prompt you for the file name containing the initial configuration of the puzzle. So before running the program, you have to create a .txt file consisting this initial configuration in the same folder and insert this file's name inside the program.
+The program will prompt you for the file name containing the initial configuration of the puzzle. So before running the program, you have to create a .txt file consisting this initial configuration in the test folder and insert this file's name inside the program.
 
 
