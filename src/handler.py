@@ -2,7 +2,7 @@ from matriks import Matriks
 
 def readfile(namafile):
 	state = Matriks()
-	f = open(namafile, "r")
+	f = open("../test/" + namafile, "r")
 	f_baris = f.readlines()
 	i = 0
 	for baris in f_baris:

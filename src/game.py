@@ -4,6 +4,13 @@ from handler import readfile
 namafile = input("Ketikkan nama filenya, ekstensinya juga ya:) : ")
 state_awal = readfile(namafile)
 
+print("Petunjuk permainan:")
+print("U: geser ke atas")
+print("D: geser ke bawah")
+print("R: geser ke kanan")
+print("L: geser ke kiri")
+print("*: kotak kosong")
+
 cur = state_awal
 
 t = 1

@@ -130,6 +130,8 @@ class Matriks:
 				idx += 1
 
 			print(f"Waktu eksekusi algoritmanya adalah: {waktu} mikro sekon")
+			print(f"Waktu eksekusi algoritmanya adalah: {waktu/1000} mili sekon")
+			print(f"Waktu eksekusi algoritmanya adalah: {waktu/1000000} sekon")
 			print()
 			print(f"Banyak simpul yang dibangkitkan saat pencarian adalah {bangkit}")
 
@@ -150,7 +152,7 @@ class Matriks:
 		par = {}
 		ketemu = False
 		dist = {}
-		setattr(Matriks, "__lt__", lambda self, other: self.bound()+dist[self] <= other.bound()+dist[self])
+		setattr(Matriks, "__lt__", lambda self, other: self.bound()+dist[self] <= other.bound()+dist[other])
 		li = PriorityQueue()
 		li.put(self)
 		dist[self] = 0
@@ -212,6 +214,10 @@ class Matriks:
 				res += str(self.pos[i][j])
 				if j < 3:
 					res += " "
+					if self.pos[i][j] == "*":
+						res += " "
+					elif int(self.pos[i][j]) < 10:
+						res += " "
 			if i < 3:
 				res += "\n"
 		return res
